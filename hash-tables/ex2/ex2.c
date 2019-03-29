@@ -6,6 +6,7 @@
 
 char **reconstruct_trip(Ticket **tickets, int length)
 {
+  // create ht with 16 capacity
   HashTable *ht = create_hash_table(16);
   // allocate enough mem of pointer char type assigned to the array of routes
   char **route = malloc(length * sizeof(char *));
