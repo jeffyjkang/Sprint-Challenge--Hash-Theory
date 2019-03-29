@@ -23,7 +23,7 @@ A     B     result
 2. `(¬A ∨ B) ∧ ¬(A ∧ ¬B)` (alternate: `(!A || B) && !(A && !B)`)
 
 ```
-(t or f)=t and not(f and t)f=t =>t
+(t or f)=t and not(f and t)f=t => t
 (t or t)=t and not(f and f)f=t => t
 (f or f)=f and not(t and t)t=f => f
 (f or t)=t and not(t and f)f=t => t
@@ -99,5 +99,5 @@ A     B     C      carry   sum
 1     1     1        1      1
 ```
 
-- SUM = a xor b xor c
-- CARRY = a && b + c && (a xor b)
+- SUM = (a xor b) xor c
+- CARRY = (a && (b + c)) && (b && c)
