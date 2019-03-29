@@ -19,12 +19,12 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
   Answer *answer = malloc(sizeof(Answer));
 
   // loop through the length of the weights
-  for (int i = 0; i < length; i++)
-  {
-    // for each index, pass in store each weight in the input list as a key, store index as value
-    hash_table_insert(ht, weights[i], i);
-  }
-  // loop trhough length again to retrieve value
+  // for (int i = 0; i < length; i++)
+  // {
+  //   // for each index, pass in store each weight in the input list as a key, store index as value
+  //   hash_table_insert(ht, weights[i], i);
+  // }
+  // loop through length again to retrieve value
   for (int i = 0; i < length; i++)
   {
     // check to see if hash table contains entry for limit-weight
@@ -33,11 +33,16 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
     if (value != -1)
     {
       // assign index_1 to value
-      answer->index_1 = value;
+      answer->index_1 = i;
       // assign index_2 to i
-      answer->index_2 = i;
+      answer->index_2 = value;
       // return answer
+      destroy_hash_table(ht);
       return answer;
+    }
+    else
+    { //value == -1 (limit-weights[i] is not found in ht)
+      hash_table_insert(ht, weights[i], i);
     }
   }
   // else return null if no pair
