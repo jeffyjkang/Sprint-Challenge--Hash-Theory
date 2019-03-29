@@ -5,6 +5,7 @@
 
 Answer *get_indices_of_item_weights(int *weights, int length, int limit)
 {
+  // create ht with 16 capacity
   HashTable *ht = create_hash_table(16);
 
   // YOUR CODE HERE
@@ -31,12 +32,15 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
     // if value exists
     if (value != -1)
     {
+      // assign index_1 to value
       answer->index_1 = value;
+      // assign index_2 to i
       answer->index_2 = i;
+      // return answer
       return answer;
     }
   }
-
+  // else return null if no pair
   return NULL;
 }
 
