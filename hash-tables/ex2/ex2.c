@@ -17,6 +17,14 @@ char **reconstruct_trip(Ticket **tickets, int length)
     // for each index pass in the ticket source as the key and destination as value
     hash_table_insert(ht, tickets[i]->source, tickets[i]->destination);
   }
+  // start route from 0th index or first location, pass in the ht and "NONE" as key
+  route[0] = hash_table_retrieve(ht, "NONE");
+  // loop through length of tickets again to add trips
+  for (int i = 0; i < length; i++)
+  {
+    // ith location in route can be found by checking ht for i-1
+    route[i] = hash_table_retrieve(ht, route[i - 1]);
+  }
 
   // return route
   return route;
